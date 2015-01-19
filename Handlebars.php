@@ -116,10 +116,10 @@ class Handlebars extends \Slim\View
 	  }
 
 
-	  $templatesLoader = new \Handlebars\Loader\FilesystemLoader($this->getTemplatesDirectory(), $options);
-	  $partialsLoader = new \Handlebars\Loader\FilesystemLoader($partialsDirectory, $options);
+	  $templatesLoader = new \Handlebars_Loader_FilesystemLoader($this->getTemplatesDirectory(), $options);
+	  $partialsLoader = new \Handlebars_Loader_FilesystemLoader($partialsDirectory, $options);
 
-	  $this->parserInstance = new \Handlebars\Handlebars([ "loader" => $templatesLoader, "partials_loader" => $partialsLoader ]);
+	  $this->parserInstance = new \Handlebars_Engine(array( "loader" => $templatesLoader, "partials_loader" => $partialsLoader ));
 
         }
 
