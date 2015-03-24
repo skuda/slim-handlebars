@@ -50,7 +50,7 @@ class Handlebars extends \Slim\View
 				    'partialsDirectory'
 
 				    );
-
+                    
     /**
      * @param array [$options]
      * @return void
@@ -83,6 +83,16 @@ class Handlebars extends \Slim\View
         $parser = $env->loadTemplate($template);
 
         return $parser->render($this->all());
+    }
+    
+    /**
+     * Creates new Handlebars Helpers.
+     *
+     */
+    public function addHelper($name, $function)
+    {
+        $env = $this->getInstance();
+        $env->addHelper($name,$function);
     }
 
     /**
