@@ -1,16 +1,22 @@
 {
-    "name": "jayc89/slim-handlebars",
+    "name": "radicaldrew/slim-handlebars",
     "type": "library",
-    "description": "Handlebars View Parser package for the Slim Framework",
+    "description": "Handlebars View Parser package for the Slim Framework based on jayc89/slim-handlebars",
     "keywords": ["templating", "extensions", "slimphp", "handlebars"],
-    "homepage": "http://github.com/jayc89/Slim-Handlebars",
+    "homepage": "http://github.com/radicaldrew/slim-handlebars",
     "license": "MIT",
     "authors": [
         {
             "name": "Jamie Cressey",
             "email": "jamiecressey89@gmail.com",
             "homepage": "https://github.com/jayc89"
+        },
+        {
+            "name": "Andrew Karp",
+            "email": "drewkarp@gmail.com",
+            "homepage": "https://github.com/radicaldrew"
         }
+        
     ],
     "require": {
         "slim/slim": ">=2.4.0",
