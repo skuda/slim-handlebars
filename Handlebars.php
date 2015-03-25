@@ -2,10 +2,15 @@
 /**
  * Slim Handlebars - a Handlebars view class for Slim
  *
+ * @author	Andrew Karp
+ * @link	https://github.com/radicaldrew/slim-handlebars
+ * 
+ * 
  * @author      Jamie Cressey
  * @link        http://github.com/jayc89/Slim-Handlebars
  * @version     0.0.1
  * @package     SlimHandlebars
+ * 
  *
  * MIT LICENSE
  *
@@ -41,15 +46,12 @@ class Handlebars extends \Slim\View
 {
     /**
      * @var Handlebars The Handlebars engine for rendering templates.
+     * 
      */
     private $parserInstance = null;
-
-    private $allowedOptions = array(
-
-				    'templateExtension',
-				    'partialsDirectory'
-
-				    );
+                    
+    public $parserOptions = array();
+   
                     
     /**
      * @param array [$options]
@@ -57,15 +59,7 @@ class Handlebars extends \Slim\View
      */
     public function __construct($options=array())
     {
-
       parent::__construct();
-
-      foreach(array_intersect_key($options, array_flip($this->allowedOptions)) as $key => $value) {
-
-	$this->$key = $value;
-
-      }
-
     }
 
     /**
@@ -81,7 +75,6 @@ class Handlebars extends \Slim\View
     {
         $env = $this->getInstance();
         $parser = $env->loadTemplate($template);
-
         return $parser->render($this->all());
     }
     
@@ -104,32 +97,21 @@ class Handlebars extends \Slim\View
     {
         if (!$this->parserInstance) {
 
-	  $partialsDirectory = $this->getTemplatesDirectory()."/partials";
-	  $options = array();
-
-	  if(isset($this->templateExtension)) {
-
-	    $options['extension'] = $this->templateExtension;
-	    
-	  }
-
-	  if(isset($this->partialsDirectory)) {
-
-	    $partialsDirectory = $this->partialsDirectory;
-
-	  }
-
-	  if(!is_dir(rtrim(realpath($partialsDirectory), '/'))) {
-
-	    throw new \RuntimeException("Partials directory '{$partialsDirectory}' is not a valid directory.");
-
-	  }
-
-
-	  $templatesLoader = new \Handlebars\Loader\FilesystemLoader($this->getTemplatesDirectory(), $options);
-	  $partialsLoader = new \Handlebars\Loader\FilesystemLoader($partialsDirectory, $options);
-
-	  $this->parserInstance = new \Handlebars\Handlebars([ "loader" => $templatesLoader, "partials_loader" => $partialsLoader ]);
+    	  $partialsDirectory = $this->getTemplatesDirectory()."/partials";
+    	  $options = array();
+      
+    	  if(isset($this->parserOptions['templateExtension'])) $options['extension'] = $this->parserOptions['templateExtension'];
+    
+    	  if(isset($this->parserOptions['partialsDirectory'])) $partialsDirectory = $this->parserOptions['partialsDirectory'];
+    
+    	  if(!is_dir(rtrim(realpath($partialsDirectory), '/'))) {
+    	    throw new \RuntimeException("Partials directory '{$partialsDirectory}' is not a valid directory.");
+    	  }
+          
+    	  $templatesLoader = new \Handlebars\Loader\FilesystemLoader($this->getTemplatesDirectory(), $options);
+    	  $partialsLoader = new \Handlebars\Loader\FilesystemLoader($partialsDirectory, $options);
+    
+    	  $this->parserInstance = new \Handlebars\Handlebars([ "loader" => $templatesLoader, "partials_loader" => $partialsLoader ]);
 
         }
 
