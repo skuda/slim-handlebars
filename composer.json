@@ -1,9 +1,9 @@
 {
-    "name": "radicaldrew/slim-handlebars",
+    "name": "skuda/slim-handlebars",
     "type": "library",
     "description": "Handlebars View Parser package for the Slim Framework based on jayc89/slim-handlebars",
     "keywords": ["templating", "extensions", "slimphp", "handlebars"],
-    "homepage": "http://github.com/radicaldrew/slim-handlebars",
+    "homepage": "http://github.com/skuda/slim-handlebars",
     "license": "MIT",
     "authors": [
         {
@@ -15,6 +15,11 @@
             "name": "Andrew Karp",
             "email": "drewkarp@gmail.com",
             "homepage": "https://github.com/radicaldrew"
+        },
+        {
+            "name": "Miguel Rasero",
+            "email": "skuda21@gmail.com",
+            "homepage": "https://github.com/skuda"
         }
         
     ],
