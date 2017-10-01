@@ -1,3 +1,12 @@
+Skuda note:
+
+I will only forked radicaldrew:master to be able to use this package with
+PHP 7 with slim 2.x.
+
+I only changed composer.json dependency on voodoophp/handlebars for xamin/handlebars.php,
+the reason being this [bug](https://github.com/XaminProject/handlebars.php/issues/133)
+
+
 # Slim Handlebars
 
 Repository built from original jayc89/slim-handlebars, kudos to jayc89 thank you for the great
